@@ -3,6 +3,7 @@ import java.text.*;
 import java.util.*;
 
 public class StudentList {
+    // Method for opening file in read mode.
     public static BufferedReader creatFileReadMode() {
         try {
             BufferedReader file = new BufferedReader(
@@ -14,6 +15,7 @@ public class StudentList {
         }
     }
 
+    // Method for opening file in write mode.
     public static BufferedWriter creatFileWriteMode() {
         try {
             BufferedWriter file = new BufferedWriter(
@@ -25,12 +27,13 @@ public class StudentList {
     }
 
     public static void main(String[] args) {
-
+        // Check whether the argument is multiple word.
+        // Valid argumets = {a, r, c, f, +}
         if (args.length != 1) {
             System.out.println(Constants.agrsWorngflag);
         }
 
-//		Check arguments
+        // functions for argument of 'a' (showing whole file)
         else if (args[0].equals(Constants.a)) {
             System.out.println(Constants.loading);
             try {
@@ -43,12 +46,14 @@ public class StudentList {
             } catch (Exception e) {
             }
             System.out.println(Constants.loaded);
-        } else if (args[0].equals(Constants.r)) {
+        }
+
+        // functions for argument of 'r' (showing a random word)
+        else if (args[0].equals(Constants.r)) {
             System.out.println(Constants.loading);
             try {
                 BufferedReader file = creatFileReadMode();
                 String line = file.readLine();
-//			System.out.println(line);
                 String words[] = line.split(",");
                 Random x = new Random();
                 int idx = x.nextInt(words.length - 1);
@@ -56,7 +61,10 @@ public class StudentList {
             } catch (Exception e) {
             }
             System.out.println(Constants.loaded);
-        } else if (args[0].contains(Constants.plus)) {
+        }
+
+        // functions for argument of '+' (adding a word)
+        else if (args[0].contains(Constants.plus)) {
             System.out.println(Constants.loading);
             try {
                 BufferedWriter file = creatFileWriteMode();
@@ -65,13 +73,17 @@ public class StudentList {
                 String df = Constants.dateFormat;
                 DateFormat dateFormat = new SimpleDateFormat(df);
                 String fd = dateFormat.format(d);
-                file.write(Constants.comma + targetWord + Constants.lastUpdate + fd);
+                file.write(Constants.comma + targetWord);
+                file.write(Constants.lastUpdate + fd);
                 file.close();
             } catch (Exception e) {
             }
 
             System.out.println(Constants.loaded);
-        } else if (args[0].contains(Constants.f)) {
+        }
+
+        // functions for argument of 'f' (checking for a word)
+        else if (args[0].contains(Constants.f)) {
             System.out.println(Constants.loading);
             try {
                 BufferedReader file = creatFileReadMode();
@@ -88,7 +100,10 @@ public class StudentList {
             } catch (Exception e) {
             }
             System.out.println(Constants.loaded);
-        } else if (args[0].contains(Constants.c)) {
+        }
+
+        // functions for arguments for c (counting words)
+        else if (args[0].contains(Constants.c)) {
             System.out.println(Constants.loading);
             try {
                 BufferedReader file = creatFileReadMode();
@@ -110,7 +125,10 @@ public class StudentList {
             } catch (Exception e) {
             }
             System.out.println(Constants.loaded);
-        } else {
+        }
+
+        // Check whether the argument is multiple character.
+        else {
             System.out.printf(Constants.entervalidArgs);
         }
     }

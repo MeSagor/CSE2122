@@ -12,7 +12,7 @@ class Constants {
     public static final String dateFormat = "dd/mm/yyyy-hh:mm:ss a";
     public static final String lastUpdate = "\nList last updated on ";
     public static final String weFound = "We found it!";
-    public static final String wordFound = " word(file) found ";
+    public static final String wordFound = " word(s) found ";
     public static final String entervalidArgs = "Please enter valid arguments !";
     public static final char commaChar = ',';
 }
